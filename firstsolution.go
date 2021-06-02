@@ -9,12 +9,7 @@ import (
 	"time"
 )
 
-type Word struct {
-	bytes   []byte
-	counter int
-}
-
-func MySolution() {
+func FirstSolution() {
 	start := time.Now()
 	file, err := os.Open("mobydick.txt")
 	defer func(file *os.File) {
@@ -26,7 +21,6 @@ func MySolution() {
 	if err != nil {
 		panic(err)
 	}
-
 	var words []*Word
 	isFound := false
 	var tempWord []byte
@@ -34,7 +28,7 @@ func MySolution() {
 	scanner := bufio.NewScanner(file)
 	scanner.Split(bufio.ScanBytes)
 	for scanner.Scan() {
-		b:= scanner.Bytes()[0]
+		b := scanner.Bytes()[0]
 		if (b >= 65 && b <= 90) || (b >= 97 && b <= 122) {
 			if b >= 65 && b <= 90 {
 				b += 32
@@ -51,8 +45,8 @@ func MySolution() {
 				}
 				if !isFound {
 					words = append(words, &Word{
-						bytes: tempWord,
-						counter:  1,
+						bytes:   tempWord,
+						counter: 1,
 					})
 				}
 				isFound = false
