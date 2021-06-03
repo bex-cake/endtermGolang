@@ -1,0 +1,3 @@
+go test -bench . -benchmem -cpuprofile=cpu.out -memprofile=mem.out -memprofilerate=1
+go tool pprof mem.out
+go tool pprof cpu.out
